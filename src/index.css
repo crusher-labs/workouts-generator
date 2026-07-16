@@ -1,10 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ---------------------------------------------------------------------------
+   FitGen - "Training Floor"
+   Athletic-performance identity: heavy condensed display (Anton) for
+   gym-signage headlines, clean geometric body (Manrope), a volt accent on a
+   true charcoal (not flat black). Palette wired as HSL tokens so the shadcn
+   primitives adopt it. Contrast checked: volt + off-white on charcoal clear AA.
+   --------------------------------------------------------------------------- */
+
+:root {
+  --background: 140 8% 6%; /* charcoal, faint green cast */
+  --foreground: 120 12% 96%; /* off-white */
+  --card: 140 8% 9%;
+  --card-foreground: 120 12% 96%;
+  --popover: 140 8% 9%;
+  --popover-foreground: 120 12% 96%;
+  --primary: 81 94% 57%; /* volt #B1F82A */
+  --primary-foreground: 140 12% 7%;
+  --secondary: 140 6% 13%;
+  --secondary-foreground: 120 10% 92%;
+  --muted: 140 5% 15%;
+  --muted-foreground: 120 7% 68%; /* ~5.4:1 on charcoal */
+  --accent: 81 94% 57%;
+  --accent-foreground: 140 12% 7%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 140 6% 17%;
+  --input: 140 6% 17%;
+  --ring: 81 94% 57%;
+  --radius: 0.75rem;
+}
+
 body {
-  @apply bg-[#0C0C0C] text-white;
-  font-family: 'DM Sans', sans-serif;
+  @apply bg-background text-foreground;
+  font-family: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Gym-signage display type. */
+.font-display {
+  font-family: 'Anton', 'Arial Narrow', ui-sans-serif, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+  font-weight: 400;
+}
+
+/* Volt glow for the hero accent. */
+.volt-glow {
+  text-shadow: 0 0 32px hsl(81 94% 57% / 0.45);
+}
+
+/* Faint measurement-grid backdrop motif (a training floor). */
+.floor-grid {
+  background-image:
+    linear-gradient(hsl(140 6% 100% / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(140 6% 100% / 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
 }

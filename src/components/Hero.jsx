@@ -8,8 +8,8 @@ const Hero = ({ onStart }) => {
       <div
         className="absolute top-8 left-4 sm:left-6 lg:left-8 z-20 flex items-center space-x-2 text-white"
       >
-        <Dumbbell className="h-10 w-10 text-[#B1F82A]" />
-        <span className="text-3xl font-bold">FitGen</span>
+        <Dumbbell className="h-9 w-9 text-primary" />
+        <span className="font-display text-3xl tracking-wide">FitGen</span>
       </div>
 
       <div className="absolute inset-0">
@@ -26,22 +26,22 @@ const Hero = ({ onStart }) => {
           className="max-w-lg"
         >
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mt-10"
+            className="font-display text-5xl leading-[0.92] tracking-tight text-white mt-10 sm:text-6xl lg:text-7xl"
           >
-            Unlock Your <span className="text-[#B1F82A]">Potential</span>
+            Unlock Your <span className="text-primary volt-glow">Potential</span>
             <br />
             Personalized Workouts
           </h1>
           <p
-            className="mt-4 text-lg text-gray-300 max-w-md"
+            className="mt-5 max-w-md text-lg text-gray-300"
           >
             Generate custom workout plans tailored to your body, goals, and fitness level.
-            Start your transformation today!
+            Start your transformation today.
           </p>
           <div className="mt-8">
             <Button
               onClick={() => onStart()}
-              className="py-4 text-lg font-semibold rounded-full bg-[#B1F82A] text-black hover:bg-[#B1F82A]/90 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="rounded-full bg-primary py-4 text-lg font-bold uppercase tracking-wide text-primary-foreground shadow-[0_0_30px_-6px_hsl(81_94%_57%/0.7)] transition-all duration-300 hover:bg-primary/90"
               size="lg"
             >
               Generate workout plan
@@ -69,7 +69,7 @@ const Hero = ({ onStart }) => {
             onClick={() => onStart()}
             className="cursor-pointer bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 flex items-center text-left"
           >
-            <Dumbbell size={32} className="text-[#B1F82A] mr-4 flex-shrink-0" />
+            <Dumbbell size={32} className="text-primary mr-4 flex-shrink-0" />
             <div>
               <h3 className="text-lg font-bold text-white">Strength</h3>
               <p className="text-gray-300 text-sm">Build muscle and power with our targeted workouts.</p>
@@ -79,7 +79,7 @@ const Hero = ({ onStart }) => {
             onClick={() => onStart()}
             className="cursor-pointer bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 flex items-center text-left"
           >
-            <Activity size={32} className="text-[#B1F82A] mr-4 flex-shrink-0" />
+            <Activity size={32} className="text-primary mr-4 flex-shrink-0" />
             <div>
               <h3 className="text-lg font-bold text-white">Endurance</h3>
               <p className="text-gray-300 text-sm">Boost your stamina and go the extra mile.</p>
@@ -89,7 +89,7 @@ const Hero = ({ onStart }) => {
             onClick={() => onStart()}
             className="cursor-pointer bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 flex items-center text-left"
           >
-            <Stretch size={32} className="text-[#B1F82A] mr-4 flex-shrink-0" />
+            <Stretch size={32} className="text-primary mr-4 flex-shrink-0" />
             <div>
               <h3 className="text-lg font-bold text-white">Mobility</h3>
               <p className="text-gray-300 text-sm">Improve flexibility and range of motion for life.</p>

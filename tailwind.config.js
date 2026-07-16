@@ -16,6 +16,10 @@ module.exports = {
 			},
 		},
 		extend: {
+			fontFamily: {
+				display: ['Anton', 'Arial Narrow', 'ui-sans-serif', 'sans-serif'],
+				sans: ['Manrope', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',

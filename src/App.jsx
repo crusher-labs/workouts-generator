@@ -145,7 +145,7 @@ import React, { useState } from 'react';
             <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet" />
           </Helmet>
           
-          <div className="min-h-screen bg-[#0C0C0C] overflow-hidden">
+          <div className="min-h-screen bg-background overflow-hidden">
             <main>
               <AnimatePresence mode="wait">
                 {!showQuestionnaire && !workoutPlan && (
