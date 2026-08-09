@@ -1,44 +1,40 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { ChevronRight } from 'lucide-react';
 
-const CallToAction = ({ onStart }) => {
-  return (
-    <section className="bg-[#0C0C0C] py-20 sm:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative bg-gradient-to-br from-gray-900 to-black rounded-3xl p-8 sm:p-12 lg:p-16 overflow-hidden">
-          <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between">
-            <div className="lg:w-1/2 text-center lg:text-left">
-              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-                Ready for Your <span className="text-[#B1F82A]">Transformation?</span>
-              </h2>
-              <p className="mt-4 text-lg text-gray-300">
-                Stop guessing, start training. Get your personalized workout plan in minutes and take the first step towards a stronger, healthier you.
-              </p>
-              <div className="mt-8">
-                <Button onClick={() => onStart()} className="px-8 py-4 text-lg font-semibold rounded-full bg-[#B1F82A] text-black hover:bg-[#B1F82A]/90 transition-all duration-300 shadow-lg hover:shadow-xl">
-                  Generate workout plan
-                </Button>
-              </div>
-            </div>
-
-            <div className="relative mt-8 lg:mt-0 lg:w-1/2 flex justify-center items-center py-0 lg:py-0">
-              <div className="w-full max-w-lg h-80 rounded-xl overflow-hidden shadow-2xl">
-                <img
-                  className="w-full h-full object-cover"
-                  alt="Man lifting weights"
-                  src="https://horizons-cdn.hostinger.com/38807980-0857-45a3-85c8-6114d9c4071f/victor-freitas-wvdydxdzkhs-unsplash-soaHV.jpg"
-                />
-              </div>
-            </div>
-          </div>
-          
-          <div className="absolute top-0 left-0 w-full h-full opacity-10">
-            <div className="absolute -top-20 -left-20 w-64 h-64 bg-[#B1F82A] rounded-full filter blur-3xl"></div>
-            <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-[#1E04FB] rounded-full filter blur-3xl"></div>
-          </div>
+/**
+ * Closing CTA. No stock photo, no clashing blue glow. Just the floor-grid + a volt panel.
+ */
+const CallToAction = ({ onStart }) => (
+  <section className="bg-background px-4 pb-24 sm:px-6 lg:px-8">
+    <div className="floor-grid relative mx-auto max-w-5xl overflow-hidden rounded-2xl border border-border bg-card p-10 sm:p-16">
+      <div
+        className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full opacity-25 blur-3xl"
+        style={{ background: 'radial-gradient(circle, hsl(81 94% 57%) 0%, transparent 70%)' }}
+        aria-hidden="true"
+      />
+      <div className="relative text-center">
+        <h2 className="font-display text-4xl tracking-tight text-foreground sm:text-6xl">
+          STOP GUESSING.
+          <br />
+          <span className="text-primary volt-glow">START TRAINING.</span>
+        </h2>
+        <p className="mx-auto mt-4 max-w-md text-muted-foreground">
+          Your plan is one minute away. Free, instant, and yours to keep.
+        </p>
+        <div className="mt-8">
+          <Button
+            onClick={() => onStart()}
+            className="bg-primary px-8 py-6 text-base font-bold uppercase tracking-wide text-primary-foreground shadow-[0_0_30px_-6px_hsl(81_94%_57%/0.65)] transition hover:bg-primary/90"
+            size="lg"
+          >
+            Generate my plan
+            <ChevronRight className="ml-1 h-5 w-5" />
+          </Button>
         </div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
+
 export default CallToAction;

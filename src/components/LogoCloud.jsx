@@ -1,58 +1,27 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 
-const logos = [
-  "FIT-FORCE",
-  "Zenith",
-  "Apex",
-  "Synergy",
-  "Momentum",
-  "Vigor",
-  "Pulse",
-  "Elevate"
+/**
+ * Honest stats strip (replaces a fake "trusted by these brands" logo cloud). Every number is
+ * a true fact about the generator itself.
+ */
+const stats = [
+  { value: '7', label: 'Questions' },
+  { value: '~60s', label: 'To a plan' },
+  { value: '0', label: 'Sign-up, cost, tracking' },
+  { value: '100%', label: 'In your browser' },
 ];
 
-const marqueeVariants = {
-  animate: {
-    x: [0, -1000],
-    transition: {
-      x: {
-        repeat: Infinity,
-        repeatType: "loop",
-        duration: 20,
-        ease: "linear",
-      },
-    },
-  },
-};
-
-const LogoCloud = () => {
-  return (
-    <div className="py-12 bg-[#0C0C0C] sm:py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-center text-lg font-semibold text-gray-400">
-          Trusted by top fitness enthusiasts worldwide
-        </h2>
-        <div className="mt-8 relative w-full overflow-hidden">
-          <motion.div
-            className="flex"
-            variants={marqueeVariants}
-            animate="animate"
-          >
-            {[...logos, ...logos].map((logo, index) => (
-              <div key={index} className="flex-shrink-0 mx-8 flex items-center justify-center">
-                <span className="text-2xl font-bold text-gray-500 tracking-wider">
-                  {logo}
-                </span>
-              </div>
-            ))}
-          </motion.div>
-          <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#0C0C0C] to-transparent"></div>
-          <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#0C0C0C] to-transparent"></div>
+const LogoCloud = () => (
+  <section className="border-y border-border bg-card/40 py-10">
+    <div className="mx-auto grid max-w-5xl grid-cols-2 gap-6 px-4 sm:px-6 md:grid-cols-4 lg:px-8">
+      {stats.map((s) => (
+        <div key={s.label} className="text-center">
+          <div className="font-display text-4xl text-primary sm:text-5xl">{s.value}</div>
+          <div className="mt-1 text-xs uppercase tracking-[0.15em] text-muted-foreground">{s.label}</div>
         </div>
-      </div>
+      ))}
     </div>
-  );
-};
+  </section>
+);
 
 export default LogoCloud;

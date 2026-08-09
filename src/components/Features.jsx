@@ -4,51 +4,53 @@ import { CheckCircle, Target, TrendingUp } from 'lucide-react';
 const features = [
   {
     number: '01',
-    title: 'Personalized Plans',
-    description: 'Get workout routines crafted specifically for your body type, goals, and fitness level.',
-    icon: <CheckCircle className="h-8 w-8 text-[#B1F82A]" />,
+    title: 'Built for your body',
+    description:
+      'Plans adapt to your weight, height, and BMI, so the volume and exercise choices match where you are today.',
+    icon: <CheckCircle className="h-7 w-7 text-primary" />,
   },
   {
     number: '02',
-    title: 'Achieve Your Goals',
-    description: 'Whether it\'s muscle gain, weight loss, or flexibility, we help you hit your targets faster.',
-    icon: <Target className="h-8 w-8 text-[#B1F82A]" />,
+    title: 'Goal-driven',
+    description:
+      'Pick muscle gain, fat loss, or flexibility and the set, rep, and cardio split changes to chase that goal.',
+    icon: <Target className="h-7 w-7 text-primary" />,
   },
   {
     number: '03',
-    title: 'Track Your Progress',
-    description: 'Monitor your improvements and stay motivated with intuitive progress tracking tools.',
-    icon: <TrendingUp className="h-8 w-8 text-[#B1F82A]" />,
+    title: 'Fits your week',
+    description:
+      'Tell it how many days you train and what equipment you own. You get a schedule you can actually keep.',
+    icon: <TrendingUp className="h-7 w-7 text-primary" />,
   },
 ];
 
 const Features = () => {
   return (
-    <section className="bg-[#0C0C0C] py-20 sm:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl lg:max-w-4xl mx-auto text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Why Choose <span className="text-[#B1F82A]">FitGen</span>?
+    <section className="bg-background py-20 sm:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto mb-14 max-w-2xl">
+          <span className="font-display text-xs tracking-[0.25em] text-primary">THE METHOD</span>
+          <h2 className="font-display mt-2 text-4xl tracking-tight text-foreground sm:text-5xl">
+            A plan that fits <span className="text-primary">you</span>, not the other way around.
           </h2>
-          <p className="mt-4 text-lg text-gray-400">
-            Experience the difference with a workout plan designed just for you.
-          </p>
         </div>
 
-        <div
-          className="grid grid-cols-1 gap-8 md:grid-cols-3"
-        >
-          {features.map((feature, index) => (
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+          {features.map((feature) => (
             <div
-              key={index}
-              className="relative p-8 rounded-2xl bg-gray-900/50 border border-gray-800 flex flex-col items-start text-left transition-all duration-300"
+              key={feature.number}
+              className="group relative overflow-hidden rounded-xl border border-border bg-card p-7 transition hover:border-primary/50"
             >
-              <div className="absolute top-0 left-0 -mt-4 -ml-4 h-16 w-16 flex items-center justify-center rounded-full bg-[#B1F82A] text-black text-2xl font-bold shadow-md">
+              <span className="font-display absolute -right-2 -top-4 text-8xl text-primary/10 transition group-hover:text-primary/20">
                 {feature.number}
-              </div>
-              <div className="mt-8">
-                <h3 className="text-xl font-bold text-white">{feature.title}</h3>
-                <p className="mt-2 text-gray-300">{feature.description}</p>
+              </span>
+              <div className="relative">
+                <div className="grid h-12 w-12 place-items-center rounded-lg border border-border bg-background">
+                  {feature.icon}
+                </div>
+                <h3 className="font-display mt-5 text-2xl tracking-wide text-foreground">{feature.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{feature.description}</p>
               </div>
             </div>
           ))}

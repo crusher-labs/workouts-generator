@@ -1,100 +1,72 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Dumbbell, Activity, Expand as Stretch } from 'lucide-react'; // Updated icons
+import { Dumbbell, Activity, Expand as Stretch, ChevronRight } from 'lucide-react';
 
+/**
+ * Hero - "Training Floor" identity. No stock photography (the motif is the measurement-grid
+ * floor + oversized Anton numerals), no fake social proof. The product's real value (the
+ * generator) is the single CTA; the three cards are quick-start intents that also open it.
+ */
 const Hero = ({ onStart }) => {
+  const intents = [
+    { icon: Dumbbell, label: 'Strength', note: 'Build muscle and raw power.' },
+    { icon: Activity, label: 'Endurance', note: 'Conditioning and stamina.' },
+    { icon: Stretch, label: 'Mobility', note: 'Range of motion and recovery.' },
+  ];
+
   return (
-    <section className="relative w-full min-h-screen h-auto flex flex-col items-center justify-center overflow-hidden py-16 md:h-screen md:py-0">
+    <section className="relative w-full overflow-hidden floor-grid">
+      {/* volt corner glow, no photo */}
       <div
-        className="absolute top-8 left-4 sm:left-6 lg:left-8 z-20 flex items-center space-x-2 text-white"
-      >
-        <Dumbbell className="h-9 w-9 text-primary" />
-        <span className="font-display text-3xl tracking-wide">FitGen</span>
-      </div>
+        className="pointer-events-none absolute -right-40 -top-40 h-[36rem] w-[36rem] rounded-full opacity-25 blur-3xl"
+        style={{ background: 'radial-gradient(circle, hsl(81 94% 57%) 0%, transparent 70%)' }}
+        aria-hidden="true"
+      />
 
-      <div className="absolute inset-0">
-        <img
-          src="https://horizons-cdn.hostinger.com/38807980-0857-45a3-85c8-6114d9c4071f/eff4f6583bc6e3772ebc771a4afcf413.png"
-          alt="Athlete working out with dumbbells on a rooftop at sunset"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent"></div>
-      </div>
+      <div className="relative z-10 mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-center px-4 py-24 sm:px-6 lg:px-8">
+        <span className="font-display inline-flex w-fit items-center gap-2 rounded-full border border-border bg-card/60 px-4 py-1.5 text-xs tracking-[0.2em] text-primary">
+          <span className="h-1.5 w-1.5 rounded-full bg-primary" /> WORKOUT PLAN GENERATOR
+        </span>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center pt-24 md:pt-0">
-        <div
-          className="max-w-lg"
-        >
-          <h1
-            className="font-display text-5xl leading-[0.92] tracking-tight text-white mt-10 sm:text-6xl lg:text-7xl"
+        <h1 className="font-display mt-6 max-w-3xl text-6xl leading-[0.9] text-foreground sm:text-7xl lg:text-8xl">
+          TRAIN <span className="text-primary volt-glow">SMART</span>,
+          <br />
+          LIFT HEAVY.
+        </h1>
+
+        <p className="mt-6 max-w-md text-lg text-muted-foreground">
+          Answer a few questions. Get a plan tuned to your body, your goal, and the days you
+          actually have. Built in your browser, no sign-up.
+        </p>
+
+        <div className="mt-9 flex flex-wrap items-center gap-4">
+          <Button
+            onClick={() => onStart()}
+            className="bg-primary px-8 py-6 text-base font-bold uppercase tracking-wide text-primary-foreground shadow-[0_0_30px_-6px_hsl(81_94%_57%/0.65)] transition hover:bg-primary/90"
+            size="lg"
           >
-            Unlock Your <span className="text-primary volt-glow">Potential</span>
-            <br />
-            Personalized Workouts
-          </h1>
-          <p
-            className="mt-5 max-w-md text-lg text-gray-300"
-          >
-            Generate custom workout plans tailored to your body, goals, and fitness level.
-            Start your transformation today.
-          </p>
-          <div className="mt-8">
-            <Button
-              onClick={() => onStart()}
-              className="rounded-full bg-primary py-4 text-lg font-bold uppercase tracking-wide text-primary-foreground shadow-[0_0_30px_-6px_hsl(81_94%_57%/0.7)] transition-all duration-300 hover:bg-primary/90"
-              size="lg"
-            >
-              Generate workout plan
-            </Button>
-          </div>
-          <div className="mt-8 flex items-center gap-4">
-            <div className="flex -space-x-4">
-              <img class="w-12 h-12 rounded-full border-2 border-yellow-400 object-cover" alt="Happy user 1" src="https://images.unsplash.com/photo-1554324178-c81140f30897" />
-              <img class="w-12 h-12 rounded-full border-2 border-blue-400 object-cover" alt="Happy user 2" src="https://images.unsplash.com/photo-1694858532747-c6ab526ea760" />
-              <img class="w-12 h-12 rounded-full border-2 border-purple-400 object-cover" alt="Happy user 3" src="https://images.unsplash.com/photo-1488475105717-be5a9aa6ad97" />
-              <img class="w-12 h-12 rounded-full border-2 border-red-400 object-cover" alt="Happy user 4" src="https://images.unsplash.com/photo-1539345834552-944c6df41392" />
-              <img class="w-12 h-12 rounded-full border-2 border-teal-400 object-cover" alt="Happy user 5" src="https://images.unsplash.com/photo-1615055257430-4e7c64110317" />
-            </div>
-            <div>
-              <p className="font-bold text-white text-lg">168K+</p>
-              <p className="text-sm text-gray-300">Realtime Users</p>
-            </div>
-          </div>
+            Generate my plan
+            <ChevronRight className="ml-1 h-5 w-5" />
+          </Button>
+          <span className="text-sm text-muted-foreground">Free, instant, client-side</span>
         </div>
 
-        <div 
-          className="flex flex-col gap-4 justify-center mt-8 md:mt-0"
-        >
-          <div
-            onClick={() => onStart()}
-            className="cursor-pointer bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 flex items-center text-left"
-          >
-            <Dumbbell size={32} className="text-primary mr-4 flex-shrink-0" />
-            <div>
-              <h3 className="text-lg font-bold text-white">Strength</h3>
-              <p className="text-gray-300 text-sm">Build muscle and power with our targeted workouts.</p>
-            </div>
-          </div>
-          <div
-            onClick={() => onStart()}
-            className="cursor-pointer bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 flex items-center text-left"
-          >
-            <Activity size={32} className="text-primary mr-4 flex-shrink-0" />
-            <div>
-              <h3 className="text-lg font-bold text-white">Endurance</h3>
-              <p className="text-gray-300 text-sm">Boost your stamina and go the extra mile.</p>
-            </div>
-          </div>
-          <div
-            onClick={() => onStart()}
-            className="cursor-pointer bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 flex items-center text-left"
-          >
-            <Stretch size={32} className="text-primary mr-4 flex-shrink-0" />
-            <div>
-              <h3 className="text-lg font-bold text-white">Mobility</h3>
-              <p className="text-gray-300 text-sm">Improve flexibility and range of motion for life.</p>
-            </div>
-          </div>
+        {/* Quick-start intents -> all open the generator */}
+        <div className="mt-14 grid w-full max-w-3xl grid-cols-1 gap-3 sm:grid-cols-3">
+          {intents.map(({ icon: Icon, label, note }) => (
+            <button
+              key={label}
+              type="button"
+              onClick={() => onStart()}
+              className="group flex items-start gap-3 rounded-xl border border-border bg-card/60 p-4 text-left transition hover:border-primary/60 hover:shadow-[0_0_24px_-8px_hsl(81_94%_57%/0.5)]"
+            >
+              <Icon className="mt-0.5 h-6 w-6 flex-none text-primary" />
+              <span>
+                <span className="block font-display text-lg tracking-wide text-foreground">{label}</span>
+                <span className="block text-xs text-muted-foreground">{note}</span>
+              </span>
+            </button>
+          ))}
         </div>
       </div>
     </section>

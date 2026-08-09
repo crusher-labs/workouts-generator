@@ -8,7 +8,6 @@ import React, { useState } from 'react';
     import Features from '@/components/Features';
     import LogoCloud from '@/components/LogoCloud';
     import WorkoutTypes from '@/components/WorkoutTypes';
-    import Trainers from '@/components/Trainers';
     import BentoGrid from '@/components/BentoGrid';
     import CallToAction from '@/components/CallToAction';
 
@@ -138,24 +137,23 @@ import React, { useState } from 'react';
       return (
         <>
           <Helmet>
-            <title>FitGen - Your Personal Workout Generator</title>
-            <meta name="description" content="Generate personalized workout plans based on your age, weight, fitness level, and goals. Start your fitness journey today!" />
+            <title>FitGen - Workout Plan Generator</title>
+            <meta name="description" content="Generate a workout plan tuned to your body, goal, and level. Free, instant, client-side." />
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-            <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet" />
+            <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
           </Helmet>
-          
-          <div className="min-h-screen bg-background overflow-hidden">
+
+          <div className="min-h-screen overflow-hidden bg-background">
             <main>
               <AnimatePresence mode="wait">
                 {!showQuestionnaire && !workoutPlan && (
                   <div key="landing">
                     <Hero onStart={handleStartQuestionnaire} />
+                    <LogoCloud />
                     <Features />
                     <WorkoutTypes />
-                    <Trainers />
                     <BentoGrid />
-                    <LogoCloud />
                     <CallToAction onStart={handleStartQuestionnaire} />
                   </div>
                 )}

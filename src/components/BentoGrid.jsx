@@ -1,59 +1,75 @@
 import React from 'react';
-import { cn } from "@/lib/utils";
+import { ClipboardList, Cpu, ShieldCheck, RefreshCw } from 'lucide-react';
 
-const BentoGrid = () => {
-    const Card = ({ className, children }) => (
-        <div className={cn("relative group rounded-3xl p-6 flex flex-col justify-between", className)}>
-            {children}
-        </div>
-    );
-    return (
-        <section className="bg-[#0C0C0C] py-20 sm:py-32">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 h-[600px]">
-                    <Card className="md:col-span-2 md:row-span-2 bg-gray-900 overflow-hidden">
-                        <div className="flex flex-col h-full">
-                            <p className="text-sm font-semibold text-gray-400">OUR COMMUNITY</p>
-                            <h3 className="text-3xl font-bold text-white mt-2">
-                                More than just a workout.
-                            </h3>
-                            <div className="flex-grow mt-4 relative">
-                                <img
-                                    className="absolute inset-0 w-full h-full object-cover rounded-2xl transition-transform duration-500"
-                                    alt="Diverse group of people meditating outdoors"
-                                    src="https://horizons-cdn.hostinger.com/38807980-0857-45a3-85c8-6114d9c4071f/natalia-blauth-piyridjkrjo-unsplash-6Wx3e.jpg"
-                                />
-                            </div>
-                        </div>
-                    </Card>
+/**
+ * "How it works" bento - replaces the stock-photo marketing bento. No external images, no
+ * dead "blog/about/contact" links. Explains the actual product honestly.
+ */
+const cells = [
+  {
+    icon: ClipboardList,
+    eyebrow: 'STEP 01',
+    title: 'Answer 7 questions',
+    body: 'Body metrics, goal, level, days per week, focus areas, and equipment. Takes under a minute.',
+    span: 'md:col-span-2 md:row-span-2',
+  },
+  {
+    icon: Cpu,
+    eyebrow: 'STEP 02',
+    title: 'Plan built client-side',
+    body: 'No server, no account. The generator runs in your browser instantly.',
+    span: '',
+  },
+  {
+    icon: ShieldCheck,
+    eyebrow: 'PRIVATE',
+    title: 'Stays on your device',
+    body: 'Nothing you enter leaves the page.',
+    span: '',
+  },
+  {
+    icon: RefreshCw,
+    eyebrow: 'STEP 03',
+    title: 'Re-run anytime',
+    body: 'Change a goal, get a new split.',
+    span: '',
+  },
+];
 
-                    <Card className="bg-gray-800 text-white">
-                        <img
-                            className="absolute inset-0 w-full h-full object-cover rounded-3xl opacity-10 transition-opacity duration-300"
-                            alt="Abstract black and white spheres floating in space"
-                            src="https://images.unsplash.com/photo-1685804575681-1256a2749223"
-                        />
-                        <div className="relative">
-                            <p className="text-sm font-semibold text-gray-400">WORLD OF FITNESS</p>
-                            <h3 className="text-3xl font-bold mt-4">
-                                View our blog
-                            </h3>
-                        </div>
-                    </Card>
+const BentoGrid = () => (
+  <section className="bg-background py-20 sm:py-28">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto mb-14 max-w-2xl">
+        <span className="font-display text-xs tracking-[0.25em] text-primary">HOW IT WORKS</span>
+        <h2 className="font-display mt-2 text-4xl tracking-tight text-foreground sm:text-5xl">
+          From questions to <span className="text-primary">plan</span>, in a minute.
+        </h2>
+      </div>
 
-                    <div className="grid grid-cols-2 gap-6">
-                        <Card className="bg-[#1E04FB] text-white">
-                            <p className="text-xs font-bold uppercase tracking-widest opacity-70">Discover</p>
-                            <h3 className="mt-auto text-2xl font-bold">About us</h3>
-                        </Card>
-                        <Card className="bg-[#B1F82A] text-black">
-                            <p className="text-xs font-bold uppercase tracking-widest">Have Questions?</p>
-                            <h3 className="mt-auto text-2xl font-bold">Contact us</h3>
-                        </Card>
-                    </div>
-                </div>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:grid-rows-2">
+        {cells.map(({ icon: Icon, eyebrow, title, body, span }) => (
+          <div
+            key={title}
+            className={`group relative flex flex-col justify-between overflow-hidden rounded-xl border border-border bg-card p-6 transition hover:border-primary/50 ${span}`}
+          >
+            <div
+              className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full opacity-0 blur-2xl transition group-hover:opacity-20"
+              style={{ background: 'radial-gradient(circle, hsl(81 94% 57%) 0%, transparent 70%)' }}
+              aria-hidden="true"
+            />
+            <div className="relative">
+              <Icon className="h-7 w-7 text-primary" />
+              <span className="font-display mt-5 block text-xs tracking-[0.25em] text-muted-foreground">
+                {eyebrow}
+              </span>
+              <h3 className="font-display mt-1 text-2xl tracking-wide text-foreground">{title}</h3>
             </div>
-        </section>
-    );
-};
+            <p className="relative mt-3 text-sm leading-relaxed text-muted-foreground">{body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
 export default BentoGrid;
