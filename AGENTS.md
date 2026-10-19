@@ -4,6 +4,10 @@
 
 Workspace rules: `x:\crusher-labs\AGENTS.md`. Global rules: `~/.claude/CLAUDE.md`. This file only adds what is specific to this repo.
 
+## Status
+
+**Parked since 2026-10-19** (founder's call in the control review): no host, no active work, nothing scheduled. Redesigned on 2026-08-09/10 as "Training Floor"; some descriptions below were written before that redesign, so check the code before trusting them.
+
 ## What it is
 
 "FitGen", a personalized workout-plan generator. A visitor answers a questionnaire (age, weight, height, goal, fitness level, days/week, focus areas, equipment) and the app generates a plan (exercises, cardio, BMI, recommendations) entirely client-side. No backend, no API, no persistence; all generation logic lives in `src/App.jsx`.
@@ -32,7 +36,7 @@ No test or lint script is defined. `eslint` is installed but has no npm script a
 
 ## What NOT to do
 
-- Only `main` exists (no `dev` branch). Do not commit code straight to `main`; create `dev` first (`git checkout -b dev main`) and work there. Docs-only changes on `main` are fine.
+- **Branches: `dev` is the working branch and `main` is fast-forward only.** Both exist and were equal on 2026-10-19. Never commit to `main` directly, docs included; this workspace lets you merge `dev` into `main` yourself once the gate is green.
 - No `Co-Authored-By` or AI-attribution trailers in commits. User identity only.
 - Do not put secrets in tracked files. `.env*` is gitignored; keep it that way.
 - Do not commit `dist/` or `node_modules/` (both gitignored).
